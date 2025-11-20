@@ -189,13 +189,9 @@ stage2_evaluation/execution_results/
     "google_bleu": "0.633",
     "similarity": 0.9212
   	},
-    "gold_result": [{...}]   // Gold 查询执行结果
+    "gold_result": [{...}]    // Gold查询执行结果
     "pred_result": [{...}]    // 模型预测执行结果
   }
 ]
 
 ```
-
-![image-20251120222910968](C:\Users\24818\AppData\Roaming\Typora\typora-user-images\image-20251120222910968.png)
-
-![image-20251120222829751](C:\Users\24818\AppData\Roaming\Typora\typora-user-images\image-20251120222829751.png)
