@@ -7,3 +7,5 @@ __pycache__/
 
 # Ignore output folder
 output/
+
+evaluation_detail/

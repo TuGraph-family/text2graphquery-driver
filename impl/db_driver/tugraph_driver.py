@@ -4,7 +4,7 @@ from driver.evaluation import DatabaseDriver
 
 class TuGraphAdapter(DatabaseDriver):
     """
-    TuGraph 数据库适配器
+    TuGraph Database Adapter
     """
     def __init__(self, uri, user, password):
         self.uri = uri
@@ -13,7 +13,7 @@ class TuGraphAdapter(DatabaseDriver):
 
     def connect(self):
         try:
-            # TuGraph 默认端口通常也是 7687 (Bolt)
+            # The default TuGraph port is usually 7687 (Bolt) as well.
             self.driver = GraphDatabase.driver(self.uri, auth=self.auth)
             self.driver.verify_connectivity()
             print(f"Connected to TuGraph at {self.uri}")
@@ -23,9 +23,7 @@ class TuGraphAdapter(DatabaseDriver):
 
     def query(self, cypher: str, db_name: str = "default") -> list:
         """
-        执行查询
-        :param cypher: Cypher 查询语句
-        :param db_name: TuGraph 中的图名称
+        Executes a Cypher query against the specified graph in TuGraph.
         """
         if not self.driver:
             return None

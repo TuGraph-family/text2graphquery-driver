@@ -140,6 +140,10 @@ python run_pipeline.py --config experiment/debug_config.json
 
 ## Data Format Description
 
+### Note on Example Data (`example_data/geography`)
+
+The sample input file, **`geography_5_csv_files_08051006_corpus_seeds.json`**, uses **Cypher** as the default graph query language for the standard answer fields. The accompanying **`.csv` files** and the **`import_config.json`** file are formatted specifically for batch import into **TuGraph DB**.
+
 ### Input Data Format
 
 Each data entry includes information such as the database name, the original question, the layered reasoning questions, and optional external knowledge. The data format example is as follows:

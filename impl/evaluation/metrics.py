@@ -64,23 +64,23 @@ class ExecutionAccuracy(BaseMetric):
         """
         执行单条查询并返回 evaluation-friendly 结构
         """
-        # 处理空预测
+        # Handling Empty Predictions
         if not pred:
             return False, None, None
 
-        # 执行金标准查询
+        # Execute Gold Standard Query
         try:
             res_gold = self.driver.query(gold, db_name=db_id)
         except Exception as e:
             res_gold = f"[GOLD ERROR] {str(e)}"
 
-        # 执行模型预测查询
+        # Execute Model Prediction Query
         try:
             res_pred = self.driver.query(pred, db_name=db_id)
         except Exception as e:
             res_pred = f"[PRED ERROR] {str(e)}"
 
-        # 判断一致性
+        # Determine Consistency
         try:
             is_correct = self._compare_results(res_gold, res_pred)
         except:
@@ -109,12 +109,12 @@ class ExternalMetric(BaseMetric):
     def _parse_log_score(self, log_content, etype):
 
         try:
-            # 尝试直接解析浮点数 
+            # Attempt to parse the float directly 
             val = float(log_content.strip())
             return val
         except ValueError:
             try:
-                # 尝试解析 JSON 
+                # Attempt to parse JSON
                 data = json.loads(log_content)
                 if isinstance(data, list):
                     valid = [x['score'] for x in data if x.get('score', -1) >= 0]
@@ -124,7 +124,7 @@ class ExternalMetric(BaseMetric):
             except:
                 pass
         
-        # 正则提取数字 (防止日志中有额外打印信息)
+        # Extract numbers using regex (to prevent interference from extra logging information)
         try:
             matches = re.findall(r"[-+]?\d*\.\d+|\d+", log_content)
             if matches:
@@ -140,13 +140,13 @@ class ExternalMetric(BaseMetric):
             print(f"ERROR: DBGPT root not found: {self.dbgpt_root}")
             return {'Grammar': 0.0, 'Similarity': 0.0}
 
-        # 1. 准备目录
+        # 1. Prepare Directory
         os.makedirs(self.temp_dir, exist_ok=True)
         
         pred_file = os.path.join(self.temp_dir, 'predictions.txt')
         gold_file = os.path.join(self.temp_dir, 'gold.txt')
 
-        # 确保去除换行符，保证一行一条
+        # Ensure newline characters are removed, guaranteeing one item per line
         clean_preds = [p.replace('\n', ' ').strip() if p else "" for p in predictions]
         clean_golds = [g.replace('\n', ' ').strip() if g else "" for g in golds]
 
@@ -159,13 +159,13 @@ class ExternalMetric(BaseMetric):
         original_cwd = os.getcwd()
 
         try:
-            # 2. 自动创建日志目录 
-            log_dir = os.path.join(self.dbgpt_root, "dbgpt_hub_gql", "output", "logs")
+            # 2. Automatically Create Log Directory 
+            log_dir = os.path.join(self.dbgpt_root, "eval_similarity_grammar", "output", "logs")
             if not os.path.exists(log_dir):
                 # print(f"DEBUG: Creating log directory at {log_dir}")
                 os.makedirs(log_dir, exist_ok=True)
 
-            # 3. 切换目录 
+            # 3. Change Directory 
             os.chdir(self.dbgpt_root)
             impl = 'tugraph-db' if dataset_type == 'text2cypher' else 'iso-gql'
 
@@ -174,18 +174,18 @@ class ExternalMetric(BaseMetric):
                 try:
                     cmd = [
                         sys.executable, 
-                        'dbgpt_hub_gql/eval/evaluation.py',
+                        'eval_similarity_grammar/eval/evaluation.py',
                         '--input', pred_file,
                         '--gold', gold_file,
                         '--etype', etype,
                         '--impl', impl
                     ]
                     
-                    # 4. 执行外部脚本           
+                    # 4. Execute External Script           
                     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
 
-                    # 5. 读取日志 
-                    log_path = os.path.join('dbgpt_hub_gql', 'output', 'logs', 'eval.log')
+                    # 5. Read Log 
+                    log_path = os.path.join('eval_similarity_grammar', 'output', 'logs', 'eval.log')
                     if os.path.exists(log_path):
                         with open(log_path, 'r', encoding='utf-8') as f:
                             content = f.read().strip()

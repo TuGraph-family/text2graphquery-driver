@@ -4,14 +4,14 @@
     "run_evaluation": true
   },
   "data": {
-    "input_path": "example_data/geography_5_csv_files_08051006_corpus_seeds.json",
+    "input_path": "example_data/geography/geography_5_csv_files_08051006_corpus_seeds.json",
     "output_path": "output/test_result.json"
   },
   "prediction": {
     "api_key": "sk-xxxxxx",
     "base_url": "https://dashscope...",
     "model": "qwen-plus",
-    "schema_path": "E:/accuracy/data/synthesis_schema_data_corpus/Sorted_corpus_0911/geography_5_csv_files_08051006/import_config.json",
+    "schema_path": "example_data/geography/import_config.json",
     "max_workers": 5,
     "level_fields": [
       ["initial_nl", "initial_query"],
@@ -25,6 +25,6 @@
     "db_uri": "bolt://localhost:7687",
     "db_user": "admin",
     "db_pass": "73@TuGraph",
-    "dbgpt_root": "tools/dbgpt-hub-gql"
+    "dbgpt_root": "tools/eval_similarity_grammar"
   }
 }

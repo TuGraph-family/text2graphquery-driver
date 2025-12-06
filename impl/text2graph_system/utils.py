@@ -39,11 +39,9 @@ def clean_query(pred: str) -> str:
     if not isinstance(pred, str):
         return ""
     
-    # 去除 think 标签
     pred = pred.replace('<think>\n\n</think>\n\n', '')
     pred = re.sub(r'<think>.*?</think>', '', pred, flags=re.DOTALL)
     
-    # 提取代码块
     match_cypher = re.search(r'```cypher(.*?)```', pred, re.DOTALL)
     if match_cypher:
         return match_cypher.group(1).replace('\n', ' ').strip()

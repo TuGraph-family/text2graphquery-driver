@@ -14,7 +14,7 @@ class QwenZeroshotSystem(Text2GraphSystem):
         self.max_workers = config.get("max_workers", 5)
         self.level_fields = config.get("level_fields", [])
         
-        # 加载 Schema
+        # Load Schema
         schema_path = config["schema_path"]
         schema_json = json.load(open(schema_path, "r", encoding="utf-8"))
         self.schema_text = schema_to_text(schema_json).rstrip() + "\n"
@@ -58,7 +58,7 @@ class QwenZeroshotSystem(Text2GraphSystem):
 
     def predict_batch(self, data: list) -> list:
         def process_record(item):
-            # 每个线程独立实例化 Client
+            # Instantiate Client independently for each thread
             local_client = OpenAI(api_key=self.api_key, base_url=self.base_url)
             result = item.copy()
             
@@ -69,8 +69,8 @@ class QwenZeroshotSystem(Text2GraphSystem):
                     continue
                 
                 raw_pred = self._call_single(local_client, question)
-                # 注意：这里只做清理，不做执行。
-                # 为了保持输出一致性，在这里调用 clean_query
+                # Note: Only perform cleanup here, not execution.
+                # Call clean_query here to maintain output consistency.
                 result[query_field] = clean_query(raw_pred)
             
             return result
@@ -81,7 +81,7 @@ class QwenZeroshotSystem(Text2GraphSystem):
             for f in tqdm(as_completed(futures), total=len(futures), desc="Predicting"):
                 results.append(f.result())
         
-        # 保持原逻辑的排序方式
+        # Preserve the original sorting logic
         try:
             results.sort(key=lambda x: int(str(x.get("instance_id", "0")).split("_")[-1]))
         except:
