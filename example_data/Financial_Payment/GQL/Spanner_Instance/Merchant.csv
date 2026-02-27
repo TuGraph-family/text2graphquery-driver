@@ -1,0 +1,101 @@
+merchant_id,business_name,category_code,status,contract_terms
+MERC00000,"Davis, Garcia and Garcia",Other,Active,Standard 2 year agreement
+MERC00001,Flores Inc,Other,Active,
+MERC00002,Rosales and Sons,Entertainment,Active,
+MERC00003,"Hendrix, Evans and Castaneda",Technology,Active,Standard 3 year agreement
+MERC00004,Anderson PLC,Other,Active,Standard 2 year agreement
+MERC00005,Duncan and Sons,Food & Beverage,Inactive,Standard 2 year agreement
+MERC00006,"Long, Wyatt and Thomas",Food & Beverage,Active,Standard 3 year agreement
+MERC00007,Jimenez and Sons,Food & Beverage,Active,
+MERC00008,"Bryant, Castillo and Gomez",Food & Beverage,Active,
+MERC00009,Rojas-Cruz,Other,Active,Standard 2 year agreement
+MERC00010,Casey-Villa,Healthcare,Active,Standard 2 year agreement
+MERC00011,Mason-Todd,Food & Beverage,Active,Standard 2 year agreement
+MERC00012,Lawrence PLC,Healthcare,Inactive,Standard 3 year agreement
+MERC00013,White-Ramirez,Food & Beverage,Active,Standard 2 year agreement
+MERC00014,Maynard Ltd,Food & Beverage,Active,
+MERC00015,Bell-Schmidt,Entertainment,Inactive,Standard 1 year agreement
+MERC00016,Williams-Weber,Food & Beverage,Active,
+MERC00017,Davis-Gill,Retail,Active,Standard 2 year agreement
+MERC00018,Dean Inc,Retail,Active,Standard 2 year agreement
+MERC00019,Savage-Valencia,Healthcare,Active,
+MERC00020,Mcguire-Hill,Other,Inactive,
+MERC00021,Duffy Ltd,Education,Active,
+MERC00022,Sanchez-Rodriguez,Travel,Active,Standard 1 year agreement
+MERC00023,Gardner Group,Retail,Active,Standard 1 year agreement
+MERC00024,Clark Ltd,Technology,Active,Standard 2 year agreement
+MERC00025,Price-Jones,Education,Active,Standard 2 year agreement
+MERC00026,Raymond-Murray,Food & Beverage,Active,Standard 2 year agreement
+MERC00027,Becker-Walker,Retail,Active,Standard 2 year agreement
+MERC00028,Mercado LLC,Technology,Active,
+MERC00029,"Edwards, Stevens and James",Food & Beverage,Active,Standard 3 year agreement
+MERC00030,"Johnson, Harrison and Jones",Retail,Active,
+MERC00031,Brown Ltd,Education,Active,
+MERC00032,"Gonzalez, Jones and Rivera",Retail,Active,Standard 3 year agreement
+MERC00033,Kennedy Ltd,Food & Beverage,Active,Standard 2 year agreement
+MERC00034,Villa-Mccoy,Food & Beverage,Active,Standard 1 year agreement
+MERC00035,Fields-Moreno,Retail,Active,Standard 3 year agreement
+MERC00036,"Mosley, Pena and Gardner",Travel,Active,Standard 2 year agreement
+MERC00037,"Wilson, Brown and Roberts",Other,Active,Standard 1 year agreement
+MERC00038,Clark Group,Retail,Suspended,Standard 1 year agreement
+MERC00039,"Butler, Buchanan and Miller",Other,Active,Standard 3 year agreement
+MERC00040,Foster-Turner,Retail,Inactive,Standard 1 year agreement
+MERC00041,"Green, Norman and Lucas",Retail,Inactive,Standard 2 year agreement
+MERC00042,Gonzalez-Thompson,Technology,Active,Standard 3 year agreement
+MERC00043,Williams-Foster,Travel,Active,Standard 3 year agreement
+MERC00044,Gibbs Ltd,Education,Active,Standard 3 year agreement
+MERC00045,"Singh, Miller and Smith",Food & Beverage,Active,Standard 2 year agreement
+MERC00046,"Bowman, Johnson and Brady",Entertainment,Active,Standard 2 year agreement
+MERC00047,"Clark, Vaughn and Richardson",Retail,Active,Standard 2 year agreement
+MERC00048,"Jacobs, Ward and Morris",Education,Inactive,Standard 2 year agreement
+MERC00049,Ramos-Sullivan,Food & Beverage,Active,Standard 1 year agreement
+MERC00050,"Barnes, Rush and Walker",Retail,Active,Standard 2 year agreement
+MERC00051,Decker and Sons,Technology,Active,Standard 1 year agreement
+MERC00052,Anderson and Sons,Food & Beverage,Active,Standard 2 year agreement
+MERC00053,Parker-Hammond,Retail,Inactive,Standard 2 year agreement
+MERC00054,Powell-Duffy,Retail,Inactive,Standard 2 year agreement
+MERC00055,"Vargas, Goodwin and Sanford",Finance,Active,Standard 3 year agreement
+MERC00056,"Simon, Morris and Smith",Food & Beverage,Inactive,Standard 1 year agreement
+MERC00057,Lawson-Butler,Entertainment,Inactive,Standard 3 year agreement
+MERC00058,"Deleon, Ponce and Reyes",Finance,Active,Standard 1 year agreement
+MERC00059,Guerrero Ltd,Entertainment,Active,Standard 3 year agreement
+MERC00060,Hill-Lambert,Entertainment,Active,Standard 1 year agreement
+MERC00061,Manning PLC,Retail,Active,
+MERC00062,"Lopez, Miller and Sanchez",Technology,Active,
+MERC00063,Beltran Group,Technology,Active,Standard 1 year agreement
+MERC00064,Grant and Sons,Entertainment,Inactive,
+MERC00065,Willis-Kramer,Travel,Inactive,Standard 1 year agreement
+MERC00066,"Burns, Thompson and Lopez",Entertainment,Active,Standard 2 year agreement
+MERC00067,Boone and Sons,Entertainment,Inactive,Standard 3 year agreement
+MERC00068,"Brown, Ross and Mcbride",Education,Active,Standard 2 year agreement
+MERC00069,Mcclure and Sons,Finance,Active,Standard 1 year agreement
+MERC00070,Castro-Green,Education,Active,Standard 2 year agreement
+MERC00071,Downs Inc,Entertainment,Active,
+MERC00072,Patterson-Miller,Healthcare,Inactive,Standard 2 year agreement
+MERC00073,Gonzalez-Coleman,Food & Beverage,Active,Standard 1 year agreement
+MERC00074,Holloway and Sons,Travel,Active,Standard 3 year agreement
+MERC00075,Peterson Inc,Technology,Active,Standard 1 year agreement
+MERC00076,Allen Group,Retail,Active,Standard 1 year agreement
+MERC00077,Miller Ltd,Travel,Active,
+MERC00078,"Gilbert, Edwards and Wilkinson",Technology,Suspended,Standard 1 year agreement
+MERC00079,"Golden, Sheppard and Joseph",Travel,Active,Standard 2 year agreement
+MERC00080,"Hernandez, Benton and Anderson",Retail,Active,Standard 2 year agreement
+MERC00081,"Webb, Taylor and Ellis",Retail,Active,
+MERC00082,Ryan-Jones,Finance,Inactive,Standard 1 year agreement
+MERC00083,"Rodriguez, Jackson and Harmon",Travel,Active,Standard 2 year agreement
+MERC00084,"Khan, Levy and Hickman",Entertainment,Active,Standard 2 year agreement
+MERC00085,"Bush, Jackson and Marks",Retail,Suspended,
+MERC00086,Peterson LLC,Retail,Active,Standard 2 year agreement
+MERC00087,"Bell, Harris and Wright",Technology,Active,Standard 2 year agreement
+MERC00088,"Romero, Long and Johnson",Technology,Active,Standard 3 year agreement
+MERC00089,"Wilson, Parrish and Martin",Healthcare,Active,
+MERC00090,Carlson PLC,Entertainment,Active,Standard 1 year agreement
+MERC00091,"Buckley, Stein and Carpenter",Finance,Active,
+MERC00092,Johnson Ltd,Technology,Inactive,Standard 2 year agreement
+MERC00093,Barr LLC,Entertainment,Active,
+MERC00094,Smith LLC,Technology,Active,Standard 2 year agreement
+MERC00095,Baker-Anderson,Other,Inactive,Standard 3 year agreement
+MERC00096,Bullock and Sons,Healthcare,Active,Standard 2 year agreement
+MERC00097,Hoffman Inc,Food & Beverage,Active,
+MERC00098,White Ltd,Retail,Active,Standard 2 year agreement
+MERC00099,Thomas-Salazar,Retail,Active,Standard 1 year agreement

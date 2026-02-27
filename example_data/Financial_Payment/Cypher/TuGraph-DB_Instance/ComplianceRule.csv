@@ -1,0 +1,21 @@
+rule_id,jurisdiction,rule_type,effective_date,description,monitoring_required
+RULE0000,US,DataProtection,2023-02-04,DataProtection compliance requirement for US,True
+RULE0001,CA,AML,2024-10-15,AML compliance requirement for CA,True
+RULE0002,EU,DataProtection,2023-05-14,DataProtection compliance requirement for EU,True
+RULE0003,JP,DataProtection,2023-05-12,DataProtection compliance requirement for JP,True
+RULE0004,EU,AML,2023-08-18,AML compliance requirement for EU,True
+RULE0005,EU,DataProtection,2023-12-31,DataProtection compliance requirement for EU,True
+RULE0006,CA,Sanctions,2022-09-11,Sanctions compliance requirement for CA,True
+RULE0007,US,AML,2021-06-10,AML compliance requirement for US,True
+RULE0008,EU,AML,2022-10-24,AML compliance requirement for EU,True
+RULE0009,US,DataProtection,2020-12-10,DataProtection compliance requirement for US,True
+RULE0010,EU,DataProtection,2022-11-27,DataProtection compliance requirement for EU,True
+RULE0011,EU,AML,2024-08-01,AML compliance requirement for EU,True
+RULE0012,US,Fraud,2022-06-07,Fraud compliance requirement for US,True
+RULE0013,US,Sanctions,2024-04-13,Sanctions compliance requirement for US,True
+RULE0014,JP,Fraud,2021-04-23,Fraud compliance requirement for JP,True
+RULE0015,US,DataProtection,2023-01-11,DataProtection compliance requirement for US,True
+RULE0016,GB,AML,2024-06-17,AML compliance requirement for GB,False
+RULE0017,US,Fraud,2025-03-31,Fraud compliance requirement for US,True
+RULE0018,US,AML,2021-09-28,AML compliance requirement for US,False
+RULE0019,US,Fraud,2023-11-26,Fraud compliance requirement for US,False

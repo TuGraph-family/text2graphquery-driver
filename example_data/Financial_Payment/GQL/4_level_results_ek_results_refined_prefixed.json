@@ -1,0 +1,72 @@
+[
+  {
+    "id": "at2gsynth_financialfinancialpayment_0",
+    "database": "FInancial_Financial_Payment",
+    "initial_question": "List all customers who have initiated at least one payment transaction and the total amount they have transacted, sorted by the total amount in descending order.",
+    "initial_nl": "MATCH (c:Customer)-[:Initiates]->(pt:PaymentTransaction) RETURN c.name AS customer_name, SUM(pt.amount) AS total_amount ORDER BY total_amount DESC",
+    "difficulty": "medium",
+    "source": "AT2G-Synth",
+    "gql": "GRAPH FInancial_Payment MATCH (c:Customer)-[:Initiates]->(pt:PaymentTransaction) RETURN c.name AS customer_name, SUM(pt.amount) AS total_amount ORDER BY total_amount DESC",
+    "instance_id": "at2gsynth_financialfinancialpayment_0",
+    "level_1": "Find Customer nodes connected to PaymentTransaction nodes via the 'Initiates' relationship, retrieve the name property of each Customer and sum the amount property of associated PaymentTransactions, then order results by the summed amount in descending order.",
+    "level_2": "List the names of customers along with the total amount they have paid across all their payment transactions, sorted from highest to lowest total payment.",
+    "level_3": "Aggregate transactional data by customer to identify spending patterns and rank individuals based on cumulative payment volume for behavioral analysis.",
+    "external_knowledge": "The query aggregates payment transaction amounts for each customer, summing all payments initiated by them, and ranks customers in descending order by total payment amount."
+  },
+  {
+    "id": "at2gsynth_financialfinancialpayment_6",
+    "database": "FInancial_Financial_Payment",
+    "initial_question": "Find the average risk score of all payment transactions that were authorized by a payment method of type 'CreditCard'.",
+    "initial_nl": "MATCH (pt:PaymentTransaction)-[:AuthorizedBy]->(:PaymentMethod {method_type: 'CreditCard'}), (pt)-[:HasRiskAssessment]->(ra:RiskAssessment) RETURN AVG(ra.score) AS average_risk_score",
+    "difficulty": "hard",
+    "source": "AT2G-Synth",
+    "gql": "GRAPH FInancial_Payment MATCH (pt:PaymentTransaction)-[:AuthorizedBy]->(:PaymentMethod {method_type: 'CreditCard'}), (pt)-[:HasRiskAssessment]->(ra:RiskAssessment) RETURN AVG(ra.score) AS average_risk_score",
+    "instance_id": "at2gsynth_financialfinancialpayment_6",
+    "level_1": "Find PaymentTransaction nodes connected via the AuthorizedBy relationship to a PaymentMethod node with the property method_type set to 'CreditCard', and also linked through the HasRiskAssessment relationship to a RiskAssessment node, then return the average of the score property from those RiskAssessment nodes.",
+    "level_2": "Calculate the average risk score for payment transactions that were made using a credit card payment method.",
+    "level_3": "Compare the risk profiles of credit card transactions by computing aggregate risk scores to identify potential patterns or anomalies in transaction authorization behavior.",
+    "external_knowledge": "The aggregate risk score refers to the average of RiskAssessment.score values for payment transactions using the 'CreditCard' payment method."
+  },
+  {
+    "id": "at2gsynth_financialfinancialpayment_7",
+    "database": "FInancial_Financial_Payment",
+    "initial_nl": "List all merchants along with their average transaction amounts processed, considering only transactions with status 'Completed'.",
+    "initial_gql": "MATCH (m:Merchant)<-[:ProcessedFor]-(pt:PaymentTransaction {status: 'Completed'}) RETURN m.business_name, AVG(pt.amount) AS avg_transaction_amount",
+    "difficulty": "medium",
+    "source": "AT2G-Synth",
+    "gql": "GRAPH FInancial_Payment MATCH (m:Merchant)<-[:ProcessedFor]-(pt:PaymentTransaction {status: 'Completed'}) RETURN m.business_name, AVG(pt.amount) AS avg_transaction_amount",
+    "instance_id": "at2gsynth_financialfinancialpayment_7",
+    "level_1": "Find all 'Merchant' nodes connected to 'PaymentTransaction' nodes via the 'ProcessedFor' relationship, where the transaction status is 'Completed', and return the merchant's business name along with the average of the transaction amounts.",
+    "level_2": "What is the average transaction amount for each merchant who has completed payments?",
+    "level_3": "Analyze merchant performance by calculating the average completed transaction value per business to identify trends in payment behavior across merchants.",
+    "external_knowledge": "The query calculates the average transaction amount only for payment transactions with status 'Completed'. Each merchant is identified by their business_name in the database."
+  },
+  {
+    "id": "at2gsynth_financialfinancialpayment_9",
+    "database": "FInancial_Financial_Payment",
+    "initial_question": "Retrieve the top 5 highest-risk payment transactions based on risk assessment scores and include the customer name who initiated them.",
+    "initial_nl": "MATCH (c:Customer)-[:Initiates]->(pt:PaymentTransaction)-[:HasRiskAssessment]->(ra:RiskAssessment) RETURN pt.transaction_id, c.name, ra.score ORDER BY ra.score DESC LIMIT 5",
+    "difficulty": "hard",
+    "source": "AT2G-Synth",
+    "gql": "GRAPH FInancial_Payment MATCH (c:Customer)-[:Initiates]->(pt:PaymentTransaction)-[:HasRiskAssessment]->(ra:RiskAssessment) RETURN pt.transaction_id, c.name, ra.score ORDER BY ra.score DESC LIMIT 5",
+    "instance_id": "at2gsynth_financialfinancialpayment_9",
+    "level_1": "Find Customer nodes connected via 'Initiates' relationships to PaymentTransaction nodes, which are in turn linked through 'HasRiskAssessment' relationships to RiskAssessment nodes, and return the transaction_id, customer name, and risk score, ordered by descending risk score with only the top 5 results.",
+    "level_2": "Retrieve the top 5 payment transactions with the highest risk assessment scores, including the transaction ID, the name of the customer who initiated it, and the associated risk score.",
+    "level_3": "Identify and prioritize the most high-risk payment transactions by analyzing the risk assessments linked to each transaction and ranking them to support targeted fraud detection efforts.",
+    "external_knowledge": "The top 5 payment transactions are ranked by the highest risk assessment scores in descending order, with each transaction including its ID, initiating customer's name, and associated risk score."
+  },
+  {
+    "id": "at2gsynth_financialfinancialpayment_10",
+    "database": "FInancial_Financial_Payment",
+    "initial_question": "List all customers who initiated payment transactions exceeding 1000 units in amount, along with the total number of such transactions per customer",
+    "initial_nl": "MATCH (c:Customer)-[:Initiates]->(pt:PaymentTransaction) WHERE pt.amount > 1000 RETURN c.name, COUNT(pt) AS transaction_count",
+    "difficulty": "medium",
+    "source": "AT2G-Synth",
+    "gql": "GRAPH FInancial_Payment MATCH (c:Customer)-[:Initiates]->(pt:PaymentTransaction) WHERE pt.amount > 1000 RETURN c.name, COUNT(pt) AS transaction_count",
+    "instance_id": "at2gsynth_financialfinancialpayment_10",
+    "level_1": "Find Customer nodes connected to PaymentTransaction nodes via the 'Initiates' relationship where the transaction amount property is greater than 1000, and return the customer name and the count of such transactions.",
+    "level_2": "List the names of customers who initiated payment transactions over $1000 and show how many such high-value transactions each has made.",
+    "level_3": "Identify patterns of high-value transaction behavior by counting the frequency of transactions exceeding $1000 per customer to analyze spending concentration among top spenders.",
+    "external_knowledge": "High-value transactions are defined as payment transactions with an amount greater than $1000. The analysis counts the number of such transactions per customer to identify spending concentration."
+  }
+]

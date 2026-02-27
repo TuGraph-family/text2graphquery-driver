@@ -1,0 +1,83 @@
+Node properties:
+- **Account**
+  - `account_id`: STRING(MAX) (REQUIRED)
+  - `account_type`: STRING(MAX) (OPTIONAL)
+  - `balance`: FLOAT64 (OPTIONAL)
+  - `currency`: STRING(MAX) (OPTIONAL)
+  - `status`: STRING(MAX) (OPTIONAL)
+  - `opened_date`: DATE (OPTIONAL)
+  - `last_activity`: STRING(MAX) (OPTIONAL)
+- **AuditLog**
+  - `log_id`: STRING(MAX) (REQUIRED)
+  - `event_type`: STRING(MAX) (OPTIONAL)
+  - `timestamp`: STRING(MAX) (OPTIONAL)
+  - `details`: STRING(MAX) (OPTIONAL)
+- **ComplianceRule**
+  - `rule_id`: STRING(MAX) (REQUIRED)
+  - `jurisdiction`: STRING(MAX) (OPTIONAL)
+  - `rule_type`: STRING(MAX) (OPTIONAL)
+  - `effective_date`: DATE (OPTIONAL)
+  - `description`: STRING(MAX) (OPTIONAL)
+  - `monitoring_required`: BOOL (OPTIONAL)
+- **Customer**
+  - `customer_id`: STRING(MAX) (REQUIRED)
+  - `customer_type`: STRING(MAX) (OPTIONAL)
+  - `name`: STRING(MAX) (OPTIONAL)
+  - `email`: STRING(MAX) (OPTIONAL)
+  - `phone`: STRING(MAX) (OPTIONAL)
+  - `address`: STRING(MAX) (OPTIONAL)
+  - `kyc_status`: STRING(MAX) (OPTIONAL)
+- **Merchant**
+  - `merchant_id`: STRING(MAX) (REQUIRED)
+  - `business_name`: STRING(MAX) (OPTIONAL)
+  - `category_code`: STRING(MAX) (OPTIONAL)
+  - `status`: STRING(MAX) (OPTIONAL)
+  - `contract_terms`: STRING(MAX) (OPTIONAL)
+- **PaymentMethod**
+  - `method_id`: STRING(MAX) (REQUIRED)
+  - `method_type`: STRING(MAX) (OPTIONAL)
+  - `provider`: STRING(MAX) (OPTIONAL)
+  - `status`: STRING(MAX) (OPTIONAL)
+  - `expiry_date`: DATE (OPTIONAL)
+  - `masked_identifier`: STRING(MAX) (OPTIONAL)
+- **PaymentTransaction**
+  - `transaction_id`: STRING(MAX) (REQUIRED)
+  - `amount`: FLOAT64 (OPTIONAL)
+  - `currency`: STRING(MAX) (OPTIONAL)
+  - `status`: STRING(MAX) (OPTIONAL)
+  - `created_at`: STRING(MAX) (OPTIONAL)
+  - `completed_at`: STRING(MAX) (OPTIONAL)
+  - `reference_number`: STRING(MAX) (OPTIONAL)
+- **RiskAssessment**
+  - `assessment_id`: STRING(MAX) (REQUIRED)
+  - `score`: INT64 (OPTIONAL)
+  - `assessed_at`: STRING(MAX) (OPTIONAL)
+  - `risk_level`: STRING(MAX) (OPTIONAL)
+
+Relationship properties:
+- **AuthorizedBy**
+  - (no properties)
+- **FundsFrom**
+  - (no properties)
+- **GovernedBy**
+  - (no properties)
+- **HasAuditLog**
+  - (no properties)
+- **HasRiskAssessment**
+  - (no properties)
+- **Initiates**
+  - (no properties)
+- **ProcessedFor**
+  - (no properties)
+- **ReceivesTo**
+  - (no properties)
+
+The relationships:
+(:Customer)-[:Initiates]->(:PaymentTransaction)
+(:PaymentTransaction)-[:AuthorizedBy]->(:PaymentMethod)
+(:PaymentTransaction)-[:FundsFrom]->(:Account)
+(:PaymentTransaction)-[:GovernedBy]->(:ComplianceRule)
+(:PaymentTransaction)-[:HasAuditLog]->(:AuditLog)
+(:PaymentTransaction)-[:HasRiskAssessment]->(:RiskAssessment)
+(:PaymentTransaction)-[:ProcessedFor]->(:Merchant)
+(:PaymentTransaction)-[:ReceivesTo]->(:Account)
