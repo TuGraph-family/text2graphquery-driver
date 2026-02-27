@@ -157,7 +157,6 @@ Each data entry includes information such as the database name, the original que
   "level_1": "Level 1 (Coarse-grained Reasoning) Question",
   "level_2": "Level 2 (Structured Reasoning) Question",
   "level_3": "Level 3 (Sub-goal Planning) Question",
-  "level_4": "Level 4 (Final Reasoning) Question",
   "external_knowledge": "Knowledge depending on sources outside the database (e.g., encyclopedia, common facts, can be empty)",
   "difficulty": "Question Difficulty (easy / medium / hard)",
   "source": "Data Source"
@@ -185,7 +184,7 @@ The model generates the corresponding predicted query statement for each data en
   "level_1_query": "Model Predicted Query Statement",
   "level_2_query": "Model Predicted Query Statement",
   "level_3_query": "Model Predicted Query Statement",
-  "level_4_query": "Model Predicted Query Statement"
+  "level_3_external_knowledge_query": "Model Predicted Query Statement"
 }
 ```
 
@@ -210,15 +209,11 @@ The file structure is as follows:
     "instance_id": "Unique Identifier",
     "gold_query": "Standard Answer Query Statement",
     "pred_query": "Model Predicted Query Statement",
-	"cleaned_pred": "Cleaned Version (of the Predicted Query)",
-     "metrics": {
-    "accuracy": 1,
-    "grammar": 1,
-    "google_bleu": "0.633",
-    "similarity": 0.9212
-  	},
-    "gold_result": [{...}]    // Execution result of the Gold Query
-    "pred_result": [{...}]    // Execution result of the Model Prediction
+    "metrics": {
+      "ea": 1.0,
+      "grammar": 1.0,
+      "similarity": 0.9212
+    }
   }
 ]
 ```
