@@ -15,7 +15,6 @@ class SQLiteAdapter(DatabaseDriver):
             print(f"Error: SQLite database not found at {self.db_path}")
             return
         try:
-            # 验证连接
             conn = sqlite3.connect(self.db_path)
             conn.execute("SELECT 1;")
             conn.close()
@@ -24,7 +23,7 @@ class SQLiteAdapter(DatabaseDriver):
             print(f"Failed to connect to SQLite DB: {e}")
 
     def query(self, sql: str, db_name: str = None) -> list:
-        """执行 SQL 并返回 list[tuple] 结果"""
+        """Execute the SQL and return the results as a list of tuples"""
         try:
             conn = sqlite3.connect(self.db_path)
             cur = conn.cursor()

@@ -3,7 +3,7 @@ import re
 import sqlite3
 
 def sqlite_schema_to_text(db_path: str) -> str:
-    """从 SQLite 数据库提取 Schema 文本"""
+    """Extract Schema text from a SQLite database"""
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
     cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
@@ -18,7 +18,7 @@ def sqlite_schema_to_text(db_path: str) -> str:
     return "Tables:\n" + "\n".join(lines)
 
 def schema_to_text(schema_json: dict) -> str:
-    """将图 JSON Schema 转换为文本描述"""
+    """Convert Graph JSON Schema into a text description"""
     lines, vertices, edges = [], [], []
     for item in schema_json.get("schema", []):
         label, type_ = item.get("label"), item.get("type")
@@ -34,19 +34,18 @@ def schema_to_text(schema_json: dict) -> str:
     if edges: lines.append("\nEdge types:\n" + "\n".join(edges))
     return "\n".join(lines)
 
-
-
 def clean_query(pred: str, target_lang: str = "cypher", graph_name: str = None) -> str:
     if not pred or not isinstance(pred, str):
         return ""
     
-   
+    # Remove Markdown code blocks (e.g., ```cypher ... ```)
     pred = re.sub(r"^```(?:cypher|gql|sql|iso-gql)?\s*", "", pred.strip(), flags=re.IGNORECASE)
     pred = re.sub(r"\s*```$", "", pred.strip())
 
+    # Replace newlines with spaces and trim whitespace
     pred = pred.replace('\n', ' ').strip()
     
- 
+    # Prepend GRAPH name if the target language is GQL and the keyword is missing
     if target_lang.lower() == "gql" and graph_name:
         if not re.match(r"(?i)^\s*GRAPH\s+", pred):
             pred = f"GRAPH {graph_name} {pred}"

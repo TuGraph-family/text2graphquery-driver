@@ -114,7 +114,7 @@ class ExternalMetric(BaseMetric):
 
         impl = 'iso-gql' if 'gql' in lang else 'tugraph-db'
 
-        # 数据清洗并准备临时文件
+        # Clean data and prepare temporary files
         os.makedirs(self.temp_dir, exist_ok=True)
         pred_file = os.path.join(self.temp_dir, 'predictions.txt')
         gold_file = os.path.join(self.temp_dir, 'gold.txt')

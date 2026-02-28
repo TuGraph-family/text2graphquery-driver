@@ -16,7 +16,7 @@ class SpannerAdapter(DatabaseDriver):
             spanner_client = spanner.Client(project=self.project_id)
             instance = spanner_client.instance(self.instance_id)
             self.database = instance.database(self.database_id)
-            # 简单测试连接
+       
             with self.database.snapshot() as snapshot:
                 snapshot.execute_sql("SELECT 1")
             print(f"Connected to Spanner: {self.database_id}")
