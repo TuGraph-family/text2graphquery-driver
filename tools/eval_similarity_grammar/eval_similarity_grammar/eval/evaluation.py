@@ -9,7 +9,6 @@ from evaluator.similarity_evaluator import SimilarityEvaluator
 from tqdm import tqdm
 
 def evaluate(gold, predict, etype, impl,level="default"):
-    # 修改日志文件名，加上 etype 后缀
     log_filename = f"eval_{etype}_{level}.log"
     log_path = f"{os.path.dirname(__file__)}/../output/logs/{log_filename}"
     log_file = open(log_path, "w", encoding="utf-8")
@@ -49,22 +48,17 @@ def evaluate(gold, predict, etype, impl,level="default"):
     pbar = tqdm(range(len(gseq_one)), desc="Evaluating")
     for i in pbar:
         try:
-            # --- 核心修复：自动探测参数个数 ---
             import inspect
-            # 获取当前 evaluate 方法的参数列表
+            # Get the parameter list of the current evaluate method
             sig = inspect.signature(evaluator.evaluate)
             params_count = len(sig.parameters)
 
             if params_count == 3:
-                # 针对需要 (pred, gold, db_id) 的插件（比如你现在的 Cypher 插件）
                 score = evaluator.evaluate(pseq_one[i], gseq_one[i], db_id_list[i])
             else:
-                # 针对只需要 (pred, gold) 的插件（比如之前的 GQL 插件）
                 score = evaluator.evaluate(pseq_one[i], gseq_one[i])
-            
-            # -------------------------------
+       
         except Exception as e:
-            # 如果还是崩了，打印出来具体原因，并给个 0 分保底
             print(f"Item {i} failed: {e}")
             score = 0
             
@@ -74,10 +68,8 @@ def evaluate(gold, predict, etype, impl,level="default"):
         log_lines.append(tmp_log)
         pbar.update(1)
 
-    # --- 核心：原始代码就是在这里把整个 JSON 扔进去的 ---
     json.dump(log_lines, log_file, ensure_ascii=False, indent=4)
-    
-    # !!! 必须加这一行，否则主程序读不到内容 !!!
+
     log_file.close() 
 
     tb = pt.PrettyTable()

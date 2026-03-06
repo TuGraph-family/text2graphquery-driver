@@ -26,9 +26,11 @@
     ]
   },
   "evaluation": {
-    "db_uri": "bolt://localhost:7687",
-    "db_user": "admin",
-    "db_pass": "PLACEHOLDER_FOR_DB_PASS",
+    "tugraph": {
+      "db_uri": "bolt://localhost:7687",
+      "db_user": "admin",
+      "db_pass": "PLACEHOLDER_FOR_DB_PASS"
+    },
     "dbgpt_root": "tools/eval_similarity_grammar",
     "spanner": {
       "project_id": "PLACEHOLDER_FOR_PROJECT_ID",

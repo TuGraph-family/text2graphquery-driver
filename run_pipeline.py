@@ -5,7 +5,7 @@ import sys
 from impl.db_driver.tugraph_driver import TuGraphAdapter
 from impl.db_driver.spanner_driver import SpannerAdapter
 from impl.db_driver.sqlite_driver import SQLiteAdapter  
-from impl.text2graph_system.specialized_systems import (
+from impl.text2graph_system.prompt import (
     CypherZeroShotSystem, GQLZeroShotSystem, SQLZeroShotSystem,
     CypherFewShotSystem, GQLFewShotSystem, SQLFewShotSystem
 )
@@ -55,12 +55,16 @@ class PipelineRunner:
                 self.db_driver = SpannerAdapter(sc["project_id"], sc["instance_id"], sc["database_id"])
             elif lang == "sql":
                 self.db_driver = SQLiteAdapter(eval_cfg["sqlite"]["db_path"])
-            else:  # cypher
+            else:  
+                tg_cfg = eval_cfg["tugraph"]  
+                if not tg_cfg:
+                    raise KeyError("Missing 'tugraph' configuration in 'evaluation' section.")
                 self.db_driver = TuGraphAdapter(
-                    eval_cfg["db_uri"],
-                    eval_cfg["db_user"],
-                    eval_cfg["db_pass"]
+                    tg_cfg["db_uri"],
+                    tg_cfg["db_user"],
+                    tg_cfg["db_pass"]
                 )
+                # ---------------------
             
             self.db_driver.connect()
         except Exception as e:
@@ -124,12 +128,16 @@ class PipelineRunner:
 
         for item in self.results:
             if query_key in item:
-                # Locate the gold (ground-truth) query
                 gold_val = (
-                    item.get("initial_sql") or item.get("initial_gql") or 
-                    item.get("initial_cypher") or item.get("SQL") or 
-                    item.get("sql") or item.get("gql_query") or item.get("gql")
-                )
+                item.get("initial_query") or   
+                item.get("initial_sql") or 
+                item.get("initial_gql") or 
+                item.get("initial_cypher") or 
+                item.get("SQL") or 
+                item.get("sql") or 
+                item.get("gql_query") or 
+                item.get("gql")
+            )
                 
                 if gold_val:
                     # Use the dedicated clean_query logic
