@@ -118,9 +118,11 @@ The main configuration file is located at `experiment/test_config.json`. Key fie
     ]
   },
   "evaluation": {
-    "db_uri": "bolt://localhost:7687",                          // TuGraph Connection URI
-    "db_user": "admin",
-    "db_pass": "PLACEHOLDER_FOR_DB_PASS",
+    "tugraph": {
+      "db_uri": "bolt://localhost:7687",                        // TuGraph Connection URI
+      "db_user": "admin",
+      "db_pass": "PLACEHOLDER_FOR_DB_PASS"
+    },
     "dbgpt_root": "tools/eval_similarity_grammar",              // Root for external eval tools
     "spanner": {                                                // Google Spanner Config
       "project_id": "PLACEHOLDER_FOR_PROJECT_ID",
@@ -172,7 +174,7 @@ Each entry includes the database name, the original question, multi-level reason
   "id": "unique_identifier",
   "database": "database_name",
   "initial_question": "Original natural language question",
-  "initial_query": "Gold standard Cypher/GQL query",
+  "gold_query": "Gold standard Cypher/GQL query",
   "level_1": "Level 1 (Coarse-grained reasoning) question",
   "level_2": "Level 2 (Structured reasoning) question",
   "level_3": "Level 3 (Sub-goal planning) question",
@@ -192,7 +194,7 @@ The model generates predicted queries for each level, saved in `data.output_path
   "id": "Unique Identifier",
   "database": "Database Name",
   "initial_question": "Original Natural Language Question",
-  "initial_query": "Correct Cypher/GQL corresponding to the original natural language question",
+  "gold_query": "Correct Cypher/GQL corresponding to the original natural language question",
   "level_1": "Level 1 (Coarse-grained Reasoning) Question",
   "level_2": "Level 2 (Structured Reasoning) Question",
   "level_3": "Level 3 (Sub-goal Planning) Question",

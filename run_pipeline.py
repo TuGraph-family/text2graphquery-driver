@@ -129,7 +129,7 @@ class PipelineRunner:
         for item in self.results:
             if query_key in item:
                 gold_val = (
-                item.get("initial_query") or   
+                item.get("gold_query") or   
                 item.get("initial_sql") or 
                 item.get("initial_gql") or 
                 item.get("initial_cypher") or 
