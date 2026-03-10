@@ -5,7 +5,7 @@ import sys
 from impl.db_driver.tugraph_driver import TuGraphAdapter
 from impl.db_driver.spanner_driver import SpannerAdapter
 from impl.db_driver.sqlite_driver import SQLiteAdapter  
-from impl.text2graph_system.prompt import (
+from impl.text2graph_system.specialized_systems import (
     CypherZeroShotSystem, GQLZeroShotSystem, SQLZeroShotSystem,
     CypherFewShotSystem, GQLFewShotSystem, SQLFewShotSystem
 )
